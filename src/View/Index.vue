@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-16 14:18:30
- * @LastEditTime: 2023-11-22 13:48:16
+ * @LastEditTime: 2023-12-21 11:18:22
 -->
 <template>
 	<div class="app-container">
@@ -15,6 +15,7 @@
 				<el-menu background-color="#2d3a4b" text-color="#fff" active-text-color="#409EFF" unique-opened
  router>
 					<el-menu-item index="/user">UserManage</el-menu-item>
+					<el-menu-item index="/admin">AdminManage</el-menu-item>
 				</el-menu>
 			</el-aside>
 			<!-- 右侧内容主体 -->

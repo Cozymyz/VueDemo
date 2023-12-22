@@ -3,13 +3,14 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-11-21 11:47:36
- * @LastEditTime: 2023-11-22 12:58:31
+ * @LastEditTime: 2023-12-21 14:08:06
  */
 import axios from 'axios'
 import Route from '../router/router'
 // 创建axios 实例
 const service = axios.create({
     timeout: 10000, // 请求超时时间
+    // baseURL:"/api",
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
     }
@@ -18,12 +19,12 @@ const service = axios.create({
 service.interceptors.request.use((config) => {
     // config.headers.Authorization = localStorage.getItem('token')
     // 这里可以自定义一些config 配置
-    const token = window.localStorage.getItem('token')
-    token && (config.headers.Authorization = token)
-    if (token) {
-      // 请求头携带token
-      config.headers.token = token
-    }
+    // const token = window.localStorage.getItem('token')
+    // token && (config.headers.Authorization = token)
+    // if (token) {
+    //   // 请求头携带token
+    //   config.headers.token = token
+    // }
     //若请求方式为post，则将data参数转为JSON字符串
     if (config.method === 'POST') {
       config.data = JSON.stringify(config.data)
