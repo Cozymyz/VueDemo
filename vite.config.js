@@ -37,7 +37,7 @@ export default defineConfig({
 		},
 	},
 	server: {
-		// host: '0.0.0.0',
+		host: '0.0.0.0',
 		port: 3000, // 本地服务端口
 		https: false,
 		strictPort: true ,// 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口

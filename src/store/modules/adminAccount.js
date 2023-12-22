@@ -7,7 +7,7 @@
  */
 import axios from '../../plugins/request.js'
 
-const getUserApi = () => {
+const getDataApi = () => {
 	return axios({
 		url: '/api/admin/user',
 		method: 'post'
@@ -15,15 +15,23 @@ const getUserApi = () => {
 }
 
 const mutations = {
-    getUser: (state) => {
-        Object.assign(state, getUserApi)
+    getData: (state, data) => {
+        state.data = data
+    }
+}
+
+const actions = {
+    loadData({commit}) {
+        getDataApi
     }
 }
 
 export default{
     namespaced: true,
     state:()=>({
-        msg: 'adminAccount'
+        msg: 'adminAccount',
+        data: null
     }),
-    mutations
+    mutations,
+    actions
 }

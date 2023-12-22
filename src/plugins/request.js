@@ -10,7 +10,7 @@ import Route from '../router/router'
 // 创建axios 实例
 const service = axios.create({
     timeout: 10000, // 请求超时时间
-    // baseURL:"/api",
+    baseURL:"/api",
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
     }

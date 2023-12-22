@@ -14,6 +14,7 @@ import axios from '../plugins/request'
 export const test = () =>{
     return axios({
         url: '/test',
-        method: 'get'
+        method: 'get',
+        data: 'testdata'
     })
 }
