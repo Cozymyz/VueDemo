@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-11-21 13:21:25
- * @LastEditTime: 2023-12-21 14:12:13
+ * @LastEditTime: 2023-12-22 16:22:54
  */
 import axios from '../plugins/request'
 
@@ -13,7 +13,7 @@ import axios from '../plugins/request'
 
 export const test = () =>{
     return axios({
-        url: '/test',
+        url: '/favicon.ico',
         method: 'get',
         data: 'testdata'
     })
