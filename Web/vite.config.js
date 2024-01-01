@@ -2,8 +2,8 @@
  * @Descripttion: 
  * @version: 
  * @Author: Meiyizhi
- * @Date: 2023-05-16 14:18:30
- * @LastEditTime: 2023-12-21 13:16:05
+ * @Date: 2024-01-01 12:24:07
+ * @LastEditTime: 2024-01-01 13:08:47
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -37,13 +37,13 @@ export default defineConfig({
 		},
 	},
 	server: {
-		host: '0.0.0.0',
-		port: 3000, // 本地服务端口
+		// host: '0.0.0.0',
+		port: 8080, // 本地服务端口
 		https: false,
 		strictPort: true ,// 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口
 		proxy: { // 代理
 			'/api': {
-				target: 'http://localhost:8080',
+				target: 'http://localhost:7788/',
 				changeOrigin: true,
 				rewrite: path => path.replace(/^\/api/, '')
 			}

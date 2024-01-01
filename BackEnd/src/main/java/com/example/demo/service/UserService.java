@@ -1,0 +1,35 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: Meiyizhi
+ * @Date: 2023-12-29 15:39:25
+ * @LastEditTime: 2023-12-30 12:04:28
+ */
+package com.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.mapper.UserMapper;
+import com.example.demo.model.User;
+
+import javax.annotation.Resource;
+
+
+@Service
+public class UserService {
+
+    @Resource
+    private UserMapper userMapper;
+
+    public List<User> allUser(){
+        List<User> userList = userMapper.allUser();
+        return userList;
+    }
+
+    public List<User> getUserByName(String userName){
+        List<User> userList = userMapper.selectByUserName(userName);
+        return userList;
+    }
+}

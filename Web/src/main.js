@@ -2,23 +2,24 @@
  * @Descripttion: 
  * @version: 
  * @Author: Meiyizhi
- * @Date: 2023-05-16 14:18:30
+ * @Date: 2024-01-01 12:24:07
+ * @LastEditTime: 2024-01-01 12:57:28
  */
 import { createApp } from 'vue'
 import App from './App.vue'
-import store from './store/index'
-import router from './router/router'
 import ElementPlus from 'element-plus'
+import 'element-plus/lib/theme-chalk/index.css'
 import 'dayjs/locale/zh-cn' //中文
-import locale from 'element-plus/es/locale/lang/zh-cn' //中文
+import locale from 'element-plus/lib/locale/lang/zh-cn' //中文
 import axios from 'axios'
+import router from "./router/router.js"
+import store from "./store/index.js"
 
 const app = createApp(App)
-app.use(store)
+app.config.globalProperties.$host = "http://localhost:8080"
 app.use(router)
+app.use(store)
 app.use(ElementPlus, { locale })
 app.use(ElementPlus, { size: 'small', zIndex: 3000 })
-// app.use(axios)
-app.config.globalProperties.axios=axios
 
 app.mount('#app')
