@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-16 14:18:30
- * @LastEditTime: 2023-12-21 11:18:22
+ * @LastEditTime: 2024-01-01 14:23:49
 -->
 <template>
 	<div class="app-container">
@@ -28,10 +28,18 @@
 </template>
 
 <script>
+import {allUser, searchUser} from '../api/axios'
 	export default {
 		// eslint-disable-next-line vue/multi-word-component-names
 		name: 'index',
-		methods: {}
+		methods: {},
+		// created(){
+		// 	allUser().then((res) =>{
+		// 	console.log(res)
+		// 		// this.$store.dispatch("adminAccount/loadData", res.data.userList)
+		// 		// console.log(this.$store.state)
+		// 	})
+		// }
 	}
 </script>
 

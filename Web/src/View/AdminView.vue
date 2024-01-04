@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-01-01 11:45:31
+ * @LastEditTime: 2024-01-04 14:13:51
 -->
 <template>
     <div>
@@ -15,36 +15,36 @@
 <script>
 // import vuexLazyload from '../plugins/vuexLazyload'
 // import adminAccountMoudle from '../store/modules/adminAccount'
- import {allUser, searchUser} from '../api/axios'
-// import axios from 'axios'
+import {allUser, searchUser} from '../api/axios'
 export default {
   name: 'adminView',
   vuexMoudleName: 'adminAccount',
   methods: {
     testApi1(){
-      console.log("apitest")
+      console.log("store.state", this.$store.state)
        allUser().then((res) =>{
          console.log(res)
+         this.$store.dispatch("loadData", res.data.userList)
+         console.log(this.$store.state)
        })
-      // axios.post('/user/allUser').then((res) =>{
-      //   console.log(res)
-      // })
     },
     testApi2(){
-      console.log("apitest")
+      console.log("store.state", this.$store.state)
       let fd = new FormData
       fd.append('userName', 'test')
        searchUser(fd).then((res) =>{
          console.log(res)
+         this.$store.dispatch("loadData", res.data.userList)
+         console.log(this.$store.state)
        })
     }
-  }
+  },
   
   // mounted(){
-  //   this.$store.registerModule('admin', adminAccountMoudle)
+  //   this.$store.registerModule('adminAccount', adminAccountMoudle)
   // },
   // beforeUnmount() {
-  //   this.$store.unregisterModule('admin', adminAccountMoudle)
+  //   this.$store.unregisterModule('adminAccount', adminAccountMoudle)
   // },
 }
 </script>
