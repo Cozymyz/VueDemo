@@ -28,19 +28,11 @@
 </template>
 
 <script>
-import {allUser, searchUser} from '../api/axios'
-	export default {
-		// eslint-disable-next-line vue/multi-word-component-names
-		name: 'index',
-		methods: {},
-		// created(){
-		// 	allUser().then((res) =>{
-		// 	console.log(res)
-		// 		// this.$store.dispatch("adminAccount/loadData", res.data.userList)
-		// 		// console.log(this.$store.state)
-		// 	})
-		// }
-	}
+export default {
+	// eslint-disable-next-line vue/multi-word-component-names
+	name: 'index',
+	methods: {},
+}
 </script>
 
 <style>

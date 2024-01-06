@@ -3,11 +3,14 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-01-04 14:13:51
+ * @LastEditTime: 2024-01-06 15:13:11
 -->
 <template>
     <div>
         this is adminView
+    </div>
+    <div>
+      <h3>{{ this.$store.state.adminAccount.loadmsg }}</h3>
     </div>
     <el-button type="primary" @click="testApi1()">test1</el-button>
     <el-button type="primary" @click="testApi2()">test2</el-button>

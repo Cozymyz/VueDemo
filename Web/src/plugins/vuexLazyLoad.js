@@ -16,6 +16,15 @@ function vuexLazyLoad(Vue){
                 })
             }
         },
+        // beforeUnmount() {
+        //     let vuexMoudleName = this.$options.vuexMoudleName
+        //     if(vuexMoudleName && !this.$store.state[vuexMoudleName]){
+        //         import(/* @vite-ignore */`../store/modules/${vuexMoudleName}`).then((res) =>{
+        //             console.log("res", res)
+        //             this.$store.unregisterModule(`${vuexMoudleName}`, res.default)
+        //         })
+        //     }
+        // },
     })
 }
 export default vuexLazyLoad
