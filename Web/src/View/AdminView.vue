@@ -3,14 +3,14 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-01-06 15:13:11
+ * @LastEditTime: 2024-01-07 11:16:44
 -->
 <template>
     <div>
         this is adminView
     </div>
     <div>
-      <h3>{{ this.$store.state.adminAccount.loadmsg }}</h3>
+      <h3>{{ this.$store.state }}</h3>
     </div>
     <el-button type="primary" @click="testApi1()">test1</el-button>
     <el-button type="primary" @click="testApi2()">test2</el-button>
@@ -42,6 +42,16 @@ export default {
        })
     }
   },
+  beforeCreate() {
+    console.log("store.state", this.$store.state)
+    let fd = new FormData
+    fd.append('userName', 'test')
+      searchUser(fd).then((res) =>{
+        console.log(res)
+        this.$store.dispatch("loadData", res.data.userList)
+        console.log(this.$store.state)
+      })
+  }
   
   // mounted(){
   //   this.$store.registerModule('adminAccount', adminAccountMoudle)
