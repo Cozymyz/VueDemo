@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-01-15 15:04:05
+ * @LastEditTime: 2024-03-08 17:00:58
 -->
 <template>
     <div>
@@ -42,23 +42,23 @@ export default {
        })
     }
   },
-  beforeMount() {
-    console.log("store.state", this.$store.state)
-    // //search
-    // let fd = new FormData
-    // fd.append('userName', 'test')
-    //   searchUser(fd).then((res) =>{
-    //     console.log(res)
-    //     this.$store.dispatch("loadData", res.data.userList)
-    //     console.log(this.$store.state)
-    //   })
-    //all
-    allUser().then((res) =>{
-      console.log(res)
-      this.$store.dispatch("loadData", res.data.userList)
-      console.log(this.$store.state)
-    })
-  }
+  // beforeMount() {
+  //   console.log("store.state", this.$store.state)
+  //   //search
+  //   let fd = new FormData
+  //   fd.append('userName', 'test')
+  //     searchUser(fd).then((res) =>{
+  //       console.log(res)
+  //       this.$store.dispatch("loadData", res.data.userList)
+  //       console.log(this.$store.state)
+  //     })
+    // //all
+    // allUser().then((res) =>{
+    //   console.log(res)
+    //   this.$store.dispatch("loadData", res.data.userList)
+    //   console.log(this.$store.state)
+    // })
+  // }
   
   // mounted(){
   //   this.$store.registerModule('adminAccount', adminAccountMoudle)
