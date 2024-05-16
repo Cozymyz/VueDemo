@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2024-01-01 12:27:40
- * @LastEditTime: 2024-01-15 14:57:12
+ * @LastEditTime: 2024-05-16 12:11:05
 -->
 <template>
     <div>
@@ -14,4 +14,27 @@
     </div>
 </template>
 <script>
+import {allUser, searchUser} from '../api/axios'
+export default {
+  name: "UserView",
+  methods: {},
+  beforeMount() {
+      console.log("UserView")
+      console.log("store.state", this.$store.state)
+      //search
+      // let fd = new FormData
+      // fd.append('userName', 'test')
+      //   searchUser(fd).then((res) =>{
+      //     console.log(res)
+      //     this.$store.dispatch("loadData", res.data.userList)
+      //     console.log(this.$store.state)
+      //   })
+      //all
+      allUser().then((res) =>{
+        console.log(res)
+        this.$store.dispatch("loadData", res.data.userList)
+        console.log(this.$store.state)
+        })
+		}
+}
 </script>

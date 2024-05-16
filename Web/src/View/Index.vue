@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-16 14:18:30
- * @LastEditTime: 2024-01-01 14:23:49
+ * @LastEditTime: 2024-05-16 11:08:33
 -->
 <template>
 	<div class="app-container">
@@ -28,10 +28,29 @@
 </template>
 
 <script>
+// import {allUser, searchUser} from '../api/axios'
 export default {
 	// eslint-disable-next-line vue/multi-word-component-names
 	name: 'index',
-	methods: {},
+	methods: {
+	// 	beforeMount() {
+	// 	console.log("store.state", this.$store.state)
+	// 	//search
+	// 	// let fd = new FormData
+	// 	// fd.append('userName', 'test')
+	// 	//   searchUser(fd).then((res) =>{
+	// 	//     console.log(res)
+	// 	//     this.$store.dispatch("loadData", res.data.userList)
+	// 	//     console.log(this.$store.state)
+	// 	//   })
+	// 	//all
+	// 	allUser().then((res) =>{
+	// 		console.log(res)
+	// 		this.$store.dispatch("loadData", res.data.userList)
+	// 		console.log(this.$store.state)
+	// 		})
+	// 	}
+	},
 }
 </script>
 
