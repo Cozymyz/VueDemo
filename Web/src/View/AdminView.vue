@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-05-16 11:19:43
+ * @LastEditTime: 2024-06-30 00:30:48
 -->
 <template>
     <div>
@@ -12,24 +12,78 @@
     <div>
       <h3>{{ this.$store.state.adminAccount.loadmsg }}</h3>
     </div>
+    <el-main class="main">
+      <el-table
+      :data="userList"
+      v-loading="listLoading"
+      element-loading-text="Loading"
+      border
+      fit>
+        <el-table-column
+        align="center"
+        label="userId">
+          <template #default="scope">
+            {{ (!scope.row.userId) ? 'NONE' : scope.row.userId }}
+          </template>
+        </el-table-column>
+        <el-table-column
+        align="center"
+        label="userName">
+          <template #default="scope">
+            {{ (scope.row.userName=='') ? 'NONE' : scope.row.userName }}
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-main>
     <!-- <el-button type="primary" @click="AllUser()">AllUser</el-button> -->
     <!-- <el-button type="primary" @click="SearchUser()">test2</el-button> -->
+    <el-footer>
+      <el-pagination
+      v-model:current-page="curPage"
+      :page-size="pagesize"
+      :total="total"
+      background
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      @prev-click="handlePrev"
+      @next-click="handleNext"
+      prev-text="prev"
+      next-text="next"
+      layout="total, sizes, prev, pager, next, jumper"
+      class="pagination">
+      </el-pagination>
+    </el-footer>
 </template>
 <script>
-// import vuexLazyload from '../plugins/vuexLazyload'
 // import adminAccountMoudle from '../store/modules/adminAccount'
 import {allUser, searchUser} from '../api/axios'
 export default {
   name: 'adminView',
   vuexMoudleName: 'adminAccount',
+  data() {
+    return{
+      listLoading: true,
+      userList: [],
+      Property: 0,
+      total: 0,
+      curPage: 1,
+      pagesize: 30,
+    }
+  },
   methods: {
     AllUser(){
-      console.log("store.state", this.$store.state)
-       allUser().then((res) =>{
-         console.log(res)
-         this.$store.dispatch("loadData", res.data.userList)
-         console.log(this.$store.state)
-       })
+      let fd = new FormData
+      fd.append('pageNumber', this.curPage)
+      fd.append('pageSize', this.pagesize)
+      allUser(fd).then((res) =>{
+        console.log(res)
+        this.$store.dispatch("loadData", res.data.userList)
+        this.userList = res.data.userList
+        this.total = res.data.total
+        this.listLoading = false
+        console.log("userList", this.userList)
+        console.log(this.$store.state)
+      })
     },
     SearchUser(){
       console.log("store.state", this.$store.state)
@@ -38,28 +92,38 @@ export default {
        searchUser(fd).then((res) =>{
          console.log(res)
          this.$store.dispatch("loadData", res.data.userList)
+         this.userList = res.data.userList
+         this.listLoading = false
+         console.log("userList", this.userList)
          console.log(this.$store.state)
        })
-    }
+    },
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+      this.pagesize = val
+      this.AllUser()
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`)
+      this.curPage = val
+      this.AllUser()
+    },
+    handlePrev:function(){
+      this.curPage-=1
+      console.log(this.curPage)
+      this.AllUser()
+    },
+    handleNext:function(){
+      this.curPage+=1
+      console.log(this.curPage)
+      this.AllUser()
+    },
   },
   beforeMount() {
     console.log("adminView")
     console.log("store.state", this.$store.state)
-    //search
-    // let fd = new FormData
-    // fd.append('userName', 'test')
-    //   searchUser(fd).then((res) =>{
-    //     console.log(res)
-    //     this.$store.dispatch("loadData", res.data.userList)
-    //     console.log(this.$store.state)
-    //   })
-    //all
-    allUser().then((res) =>{
-      console.log(res)
-      this.$store.dispatch("loadData", res.data.userList)
-      console.log(this.$store.state)
-    })
-  }
+    this.AllUser()
+  },
   
   // mounted(){
   //   this.$store.registerModule('adminAccount', adminAccountMoudle)
@@ -69,3 +133,13 @@ export default {
   // },
 }
 </script>
+<style>
+.main{
+  margin: 10px;
+  padding: 10px;
+}
+.pagination{
+  margin-left: 1%;
+  width: 10%;
+}
+</style>

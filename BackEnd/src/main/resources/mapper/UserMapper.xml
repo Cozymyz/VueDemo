@@ -12,6 +12,13 @@
     <include refid="Base_Column_List" />
     from user
   </select>
+  <select id="getPageUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where 1=1
+    limit #{no,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+  </select>
   <select id="selectByUserName" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

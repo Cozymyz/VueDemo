@@ -8,6 +8,6 @@ export default{
     // namespaced: true,
     state:()=>({
         msg: 'userAccount',
-        loadmsg: false
+        loadmsg: 'false'
     })
 }

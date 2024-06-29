@@ -9,6 +9,9 @@ public interface UserMapper {
 
     List<User> allUser();
 
+    //    @Select("select * from user where 1=1 limit #{no}, #{pageSize}")
+    List<User> getPageUser(int no, int pageSize);
+
     List<User> selectByUserName(String userName);
     long countByExample(UserExample example);
 

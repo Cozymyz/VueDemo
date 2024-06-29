@@ -28,6 +28,10 @@ public class UserService {
         return userList;
     }
 
+    public List<User> getPageUser(int no, int pageSize){
+        return userMapper.getPageUser(no, pageSize);
+    }
+
     public List<User> getUserByName(String userName){
         List<User> userList = userMapper.selectByUserName(userName);
         return userList;
