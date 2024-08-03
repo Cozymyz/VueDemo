@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-06-30 00:30:48
+ * @LastEditTime: 2024-07-03 14:44:22
 -->
 <template>
     <div>
@@ -67,7 +67,7 @@ export default {
       Property: 0,
       total: 0,
       curPage: 1,
-      pagesize: 30,
+      pagesize: 20,
     }
   },
   methods: {
@@ -137,8 +137,10 @@ export default {
 .main{
   margin: 10px;
   padding: 10px;
+  height: 80%;
 }
 .pagination{
+  margin-top: 2%;
   margin-left: 1%;
   width: 10%;
 }
