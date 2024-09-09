@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-07-03 14:44:22
+ * @LastEditTime: 2024-08-22 22:46:29
 -->
 <template>
     <div>
@@ -67,7 +67,7 @@ export default {
       Property: 0,
       total: 0,
       curPage: 1,
-      pagesize: 20,
+      pagesize: 300,
     }
   },
   methods: {
