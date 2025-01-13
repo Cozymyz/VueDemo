@@ -3,14 +3,14 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2024-08-22 22:46:29
+ * @LastEditTime: 2025-01-13 23:51:50
 -->
 <template>
     <div>
         this is adminView
     </div>
     <div>
-      <h3>{{ this.$store.state.adminAccount.loadmsg }}</h3>
+      <h3>{{ this.$store.state.adminAccount?.loadmsg || 'Loading...' }}</h3>
     </div>
     <el-main class="main">
       <el-table
@@ -59,9 +59,14 @@
 import {allUser, searchUser} from '../api/axios'
 export default {
   name: 'adminView',
-  vuexMoudleName: 'adminAccount',
+  // vuexMoudleName: 'adminAccount',
+  vuexModule: {
+    name :'adminAccount',
+    extent: 'timeLimit'
+  },
   data() {
     return{
+      hasLoaded: false,
       listLoading: true,
       userList: [],
       Property: 0,
@@ -122,7 +127,10 @@ export default {
   beforeMount() {
     console.log("adminView")
     console.log("store.state", this.$store.state)
-    this.AllUser()
+    if (!this.hasLoaded) {
+      this.hasLoaded = true;
+      this.AllUser();
+    }
   },
   
   // mounted(){
