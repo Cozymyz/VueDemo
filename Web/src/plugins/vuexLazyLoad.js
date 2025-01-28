@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2024-01-01 12:28:30
- * @LastEditTime: 2025-01-13 23:51:41
+ * @LastEditTime: 2025-01-18 21:30:20
  */
 function vuexLazyLoad(Vue){
     Vue.mixin({
@@ -23,6 +23,7 @@ function vuexLazyLoad(Vue){
                     switch (vuexModule.extent) {
                         case 'session':
                           // 当页面关闭或刷新时注销模块
+                          console.log("choose session")
                           window.addEventListener('beforeunload', () => {
                                 if (this.$store.hasModule(vuexModuleName)) {
                                     this.$store.unregisterModule(vuexModuleName);
@@ -32,7 +33,13 @@ function vuexLazyLoad(Vue){
                           break;
                         case 'timeLimit':
                           // 一定时间后自动注销模块
-                          setTimeout(() => this.$store.unregisterModule(vuexModuleName), 10000); // 默认 60 秒
+                          setTimeout(() => {
+                            if (this.$store.hasModule(vuexModuleName)) {
+                                this.$store.unregisterModule(vuexModuleName);
+                                console.log(`Module "${vuexModuleName}" unregistered on time limit.`);
+                            }
+                          }, 10000);
+                        //   setTimeout(() => alert("timelimit"), 10000);
                           break;
                         default:
                           console.warn(`Unknown extent type "${vuexModule.extent}" for module "${vuexModuleName}".`)
@@ -44,9 +51,19 @@ function vuexLazyLoad(Vue){
             const vuexModule = this.$options.vuexModule
             if(vuexModule && vuexModule.name){
                 const vuexModuleName = vuexModule.name
-                if(vuexModuleName && this.$store.hasModule(vuexModuleName)){
-                    console.log(`Unregistering module "${vuexModuleName}" on component unmount.`)
-                    this.$store.unregisterModule(vuexModuleName)
+                if(this.$store.hasModule(vuexModuleName)){
+                    switch (vuexModule.extent) {
+                        case 'session':
+                          break;
+                        case 'component':
+                            console.log(`Unregistering module "${vuexModuleName}" on component unmount.`)
+                            this.$store.unregisterModule(vuexModuleName)
+                            break;
+                        default:
+                          console.warn(`Unknown extent type "${vuexModule.extent}" for module "${vuexModuleName}".`)
+                          this.$store.unregisterModule(vuexModuleName)
+                      }
+                    
                 }
             }
         },

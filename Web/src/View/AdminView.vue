@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Meiyizhi
  * @Date: 2023-05-18 17:04:44
- * @LastEditTime: 2025-01-13 23:51:50
+ * @LastEditTime: 2025-01-18 21:46:41
 -->
 <template>
     <div>
@@ -62,7 +62,7 @@ export default {
   // vuexMoudleName: 'adminAccount',
   vuexModule: {
     name :'adminAccount',
-    extent: 'timeLimit'
+    extent: 'unkown'
   },
   data() {
     return{
