@@ -81,5 +81,8 @@ APSEC 2024
 ## Author
 
 Yizhi Mei
+Ph.D. Candidate, Oita University
+Frontend Software Engineering Research
 
-Oita University
+GitHub: https://github.com/Cozymyz
+E-mail:yizhimei0302@gmail.com / v25f1001@oita-u.ac.jp
